@@ -31,6 +31,8 @@ tampering, or is absolutely quantum-proof.
   transparent vector mark for light surfaces.
 - [`tracelogica-mark-dark.svg`](../assets/brand/tracelogica-mark-dark.svg) — square
   dark treatment for GitHub and application avatars.
+- [`tracelogica-github.png`](../assets/brand/tracelogica-github.png) — 512 px square
+  PNG prepared for the GitHub organization avatar.
 - [`tracelogica-mark.png`](../assets/brand/tracelogica-mark.png) — transparent
   high-resolution raster concept for compatibility and exploration.
 
