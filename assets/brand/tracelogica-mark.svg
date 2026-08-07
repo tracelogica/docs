@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">TraceLogica mark</title>
+  <desc id="desc">Three telemetry paths converge at a verification diamond and continue into a ledger.</desc>
+  <g fill="none" stroke="#21D4C2" stroke-width="32" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M80 136h72l88 88h80"/>
+    <path d="M80 256h240"/>
+    <path d="M80 376h72l88-88h80"/>
+    <path d="M336 96v320"/>
+  </g>
+  <path d="M288 256l48-48 48 48-48 48z" fill="#08131F" stroke="#21D4C2" stroke-width="16"/>
+</svg>
