@@ -15,7 +15,6 @@ they are marked stable.
 - [OpenTelemetry ingestion](docs/otlp-ingestion.md)
 - [Proof verification](docs/proof-verification.md)
 - [Security and cryptography](docs/security.md)
-- [Brand guidelines](docs/brand.md)
 - [Glossary](docs/glossary.md)
 - [Status and compatibility](docs/status.md)
 
@@ -25,7 +24,7 @@ This public repository intentionally excludes source code, credentials, private
 infrastructure, operational runbooks, unreleased security analysis, and customer
 data. Report suspected security issues using the process in [SECURITY.md](SECURITY.md).
 
-![TraceLogica mark](assets/brand/tracelogica-mark.svg)
+![TraceLogica](assets/brand/tracelogica-logo-lockup-dark.png)
 
 ## Contributing
 
