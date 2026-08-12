@@ -1,1 +1,4 @@
 assets/brand/*-chroma.png
+site/
+__pycache__/
+*.py[cod]

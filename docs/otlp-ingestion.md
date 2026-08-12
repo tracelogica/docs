@@ -1,32 +1,26 @@
-# OpenTelemetry ingestion
+# OpenTelemetry ingestion scope
 
-TraceLogica plans to accept spans using the OpenTelemetry Protocol (OTLP) over
-gRPC and HTTP. Exact endpoints, authentication headers, limits, and retry behavior
-will be published with the first supported release.
+TraceLogica does not accept OpenTelemetry Protocol (OTLP) traffic in the current
+MVP. It has no OTLP/gRPC or OTLP/HTTP endpoint, span store, trace search API,
+canonical span format, or per-span Merkle proof.
 
-## Expected client behavior
+MeshAI may derive evidence from application activity, but only opaque checkpoint
+metadata and SHA-256 commitments cross the TraceLogica boundary. Raw spans,
+telemetry attributes, prompts, customer names, and tenant ULIDs are not part of
+the checkpoint request.
 
-- Use an OpenTelemetry SDK or Collector with bounded queues and retry behavior.
-- Send trace data only to the tenant endpoint and credentials assigned to it.
-- Avoid placing secrets or unnecessary personal data in span attributes.
-- Treat successful ingestion as acceptance for processing, not immediate
-  blockchain finality.
+The implemented HTTP surface is limited to:
 
-## Processing states
+- authenticated checkpoint creation at `POST /api/v1/checkpoints`;
+- authenticated, account-scoped receipt retrieval at
+  `GET /api/v1/checkpoints/{receipt_id}`;
+- public signing-key metadata at `GET /api/v1/signing-keys/{key_id}`; and
+- readiness at `GET /health`.
 
-An accepted span progresses through these conceptual states:
+See the [API quickstart](api-quickstart.md) for request fields, authentication,
+responses, and errors.
 
-1. `accepted` — input passed transport and tenant validation.
-2. `stored` — the searchable representation was persisted.
-3. `batched` — a canonical record was assigned to a commitment batch.
-4. `finalized` — the batch commitment was finalized in a block.
-
-The future API will expose enough information to distinguish ingestion acceptance
-from cryptographic finality.
-
-## Compatibility
-
-OpenTelemetry permits arbitrary attributes and evolving semantic conventions.
-TraceLogica therefore versions its canonicalization rules and preserves the
-distinction between absent values, empty values, numeric types, byte values, and
-repeated values.
+Raw OTLP ingestion and span-level proofs are deferred platform ideas, not current
+interfaces or roadmap commitments. Adding them would require a new architecture
+decision, privacy and threat-model review, versioned formats, and compatibility
+tests.

@@ -1,39 +1,61 @@
-# Proof verification
+# Receipt verification
 
-A TraceLogica proof package is intended to let a verifier answer:
+A TraceLogica v1 receipt lets a verifier answer:
 
-> Does this canonical span record belong to the committed batch referenced by a
-> finalized TraceLogica block?
+> Did the trusted TraceLogica key sign this exact checkpoint and bind it to this
+> account, network, sequence, authority-recorded time, and preceding receipt?
 
-## Planned proof package
+The checkpoint-service repository includes `tracelogica-verify`, a standalone
+offline verifier. Verification requires the receipt and the corresponding trusted
+public-key document; it does not require either MeshAI's query database or a live
+TraceLogica service.
 
-- Protocol and canonicalization versions
-- Hash and signature algorithm identifiers
-- Canonical span record or its digest
-- Leaf index and total leaf count
-- Merkle sibling path
-- Batch commitment metadata
-- Finalized block header
-- Validator signature material
-- Network and chain identifiers
+## Verify one receipt
 
-## Verification procedure
+```sh
+tracelogica-verify receipt \
+  --receipt receipt.json \
+  --public-key public-key.json
+```
 
-1. Canonicalize the supplied span using the declared version, if canonical bytes
-   are not already provided.
-2. Hash the domain-separated leaf representation.
-3. Recompute the Merkle root using the leaf index and sibling path.
-4. Compare it with the root in the batch commitment.
-5. Recompute the commitment and block hashes.
-6. Verify the block linkage and validator signatures under the declared protocol
-   rules.
-7. Confirm that the relevant key was valid for that block height.
+The verifier validates the strict JSON shape and version identifiers, recomputes
+the embedded checkpoint hash, constructs the fixed canonical receipt bytes,
+recomputes the receipt hash, checks key lifecycle metadata, and verifies the
+`ed25519-v1` signature.
 
-## What a valid proof means
+## Verify a receipt chain
 
-A valid proof demonstrates cryptographic inclusion in finalized history. It does
-not establish the truth of the operation described by the span, completeness of
-the trace, or authorization to disclose the span.
+```sh
+tracelogica-verify chain \
+  --receipts receipts.jsonl \
+  --public-key public-key.json
+```
 
-The binary proof format and test vectors remain under design and will be published
-before being marked stable.
+Chain verification accepts an ordered JSONL export beginning at global sequence
+1. It additionally requires no sequence gaps or duplicates, a zero previous hash
+for genesis, correct hash linkage, and one consistent `network_id`.
+
+Exit code `0` means valid, `1` means a local I/O failure, and `2` means malformed
+or invalid evidence.
+
+## Trust the key separately
+
+Signature verification is meaningful only if the verifier trusts the public key
+and its lifecycle history. Retain the key document with receipt exports and
+obtain it through an authenticated process. A compromise timestamp changes the
+trust interpretation of historical signatures even though their bytes still
+verify.
+
+## What verification does not prove
+
+A valid receipt proves the configured authority's signature and the integrity of
+the fields it binds. It does not prove that source evidence is truthful or
+complete, that the authority time is externally trusted, that no receipts were
+withheld, or that the authority and key were uncompromised.
+
+The v1 frozen compatibility vector fixes the canonical bytes, hashes, public key,
+and signature for cross-language implementations. The public interface remains
+pre-release until a supported version is published.
+
+The [API quickstart](api-quickstart.md) describes receipt and public-key
+retrieval before offline verification.
