@@ -64,4 +64,5 @@ class SiteTest(unittest.TestCase):
         self.assertIn("document.documentElement.classList.add('js')", html)
 
 
+
 if __name__ == "__main__": unittest.main()

@@ -2,6 +2,10 @@
 
 TraceLogica welcomes corrections and improvements to its public documentation.
 
+- [Open an issue](https://github.com/tracelogica/docs/issues/new)
+- [Browse current issues](https://github.com/tracelogica/docs/issues)
+- [Propose a change](https://github.com/tracelogica/docs/compare)
+
 ## Before opening a change
 
 - Keep examples free of real credentials, account identifiers, endpoints, and

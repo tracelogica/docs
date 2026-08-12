@@ -180,10 +180,10 @@ def template(title: str, body: str, headings: list[tuple[str, str]], current: st
 <div class="release-banner" role="status"><span>Pre-release</span> Signed-checkpoint MVP · Checkpoint authority not yet deployed · Interfaces may change</div>
 <header class="topbar">
   <a class="brand" href="index.html" aria-label="TraceLogica documentation home"><img src="assets/brand/tracelogica-github-blue.png" alt=""><strong>TraceLogica</strong><span>Docs</span></a>
-  <div class="header-actions"><a href="status.html">Project status</a><button id="theme-toggle" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button><button id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span aria-hidden="true">☰</span><span class="sr-only">Open navigation</span></button></div>
+  <div class="header-actions"><a href="https://github.com/tracelogica/docs">GitHub</a><a href="status.html">Project status</a><button id="theme-toggle" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button><button id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span aria-hidden="true">☰</span><span class="sr-only">Open navigation</span></button></div>
 </header>
 <div class="layout">
-  <nav id="site-nav" class="sidebar" aria-label="Documentation"><div class="nav-label">Documentation</div>{nav}<div class="nav-label secondary">Project</div><a href="contributing.html">Contributing</a><a href="security-policy.html">Security policy</a></nav>
+  <nav id="site-nav" class="sidebar" aria-label="Documentation"><div class="nav-label">Documentation</div>{nav}<div class="nav-label secondary">Project</div><a href="contributing.html">Contributing</a><a href="https://github.com/tracelogica/docs">GitHub repository</a><a href="security-policy.html">Security policy</a></nav>
   <main id="content" tabindex="-1"><article>{body}<footer><span>TraceLogica documentation</span><span>Signed checkpoints, independently verifiable.</span></footer></article></main>
   <aside class="toc" aria-label="On this page"><div class="nav-label">On this page</div>{toc or '<a href="#content">Overview</a>'}</aside>
 </div><script src="assets/site.js"></script></body></html>'''
