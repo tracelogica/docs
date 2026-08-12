@@ -177,7 +177,7 @@ def template(title: str, body: str, headings: list[tuple[str, str]], current: st
 </head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a>
-<div class="release-banner" role="status"><span>Pre-release</span> Signed-checkpoint MVP · Not yet deployed · Interfaces may change</div>
+<div class="release-banner" role="status"><span>Pre-release</span> Signed-checkpoint MVP · Checkpoint authority not yet deployed · Interfaces may change</div>
 <header class="topbar">
   <a class="brand" href="index.html" aria-label="TraceLogica documentation home"><img src="assets/brand/tracelogica-github-blue.png" alt=""><strong>TraceLogica</strong><span>Docs</span></a>
   <div class="header-actions"><a href="status.html">Project status</a><button id="theme-toggle" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button><button id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span aria-hidden="true">☰</span><span class="sr-only">Open navigation</span></button></div>
